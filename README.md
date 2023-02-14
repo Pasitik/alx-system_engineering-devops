@@ -1,2 +1,1 @@
-My bash scripts
-Shell basics
+my bash readme file
