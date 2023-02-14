@@ -1,2 +1,2 @@
 #!/bin/bash
-echo num | awk '{printf("%.2f \n",$1)}'
+print "%.2f \n" $NUM
