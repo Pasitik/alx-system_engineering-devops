@@ -1,20 +1,6 @@
 #!/usr/bin/env bash
-# this is a script that checks a school file
-file="school"
-
-#!/usr/bin/env bash
-# printing strings 10 times using while
-count=1
-while [[ "$count" -le 10 ]]
+#using for loop to display content of current directory
+for file in *
 do
-    if [[ "$count" -eq 4 ]]
-    then
-        echo "bad luck"
-    elif [[ "$count" -eq 8 ]]
-    then
-        echo "good luck"
-    else
-        echo "Best School"
-    fi
-    (( count++ ))
+  echo "$file" | cut -d '-' -f 2;
 done
