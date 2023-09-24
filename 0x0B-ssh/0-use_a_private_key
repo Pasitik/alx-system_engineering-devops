@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Define server hostname or IP address
 server="3.85.175.50"
 
