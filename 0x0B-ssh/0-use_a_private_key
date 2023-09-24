@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Define server hostname or IP address
+server="3.85.175.50"
+
+
+# Define private key file path
+private_key="~/.ssh/school"
+
+# SSH command using single-character flags
+ssh -i "$private_key" ubuntu@"$server"
+
