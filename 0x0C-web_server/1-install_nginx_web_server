@@ -7,7 +7,7 @@ new_path="/var/www"
 
 sudo apt-get update
 sudo apt-get install -y nginx
-sudo chown -R $USER:$USER $nginx_configs
+sudo chown -R "$USER":"$USER" $nginx_configs
 sudo sed -i "s|$old_path|$new_path|g" "$nginx_configs"
 pid=$(pgrep nginx | head -n 1)
-sudo kill -HUP $pid
+sudo kill -HUP "$pid"
