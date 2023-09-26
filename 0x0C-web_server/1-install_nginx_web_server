@@ -12,4 +12,4 @@ echo "Hello World!" > /var/www/index.html
 sudo chown -R "$USER":"$USER" $nginx_configs
 sudo sed -i "s|$old_path|$new_path|g" "$nginx_configs"
 pid=$(pgrep nginx | head -n 1)
-sudo kill -HUP "$pid"
+sudo service nginx start
