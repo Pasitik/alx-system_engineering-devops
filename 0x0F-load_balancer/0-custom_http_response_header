@@ -17,6 +17,8 @@ sudo chown -R "$USER":"$USER" $new_path
 echo "Hello World!" > /var/www/index.html
 sudo chown -R "$USER":"$USER" $nginx_configs
 sudo sed -i "/location \/ {/a\\                $custom_header" "$nginx_configs"
+sudo sed -i "/location /redirect_me/ {/a\\                $custom_header" "$nginx_configs"
+sudo sed -i "/location = /custom_404.html/ {/a\\                $custom_header" "$nginx_configs"
 sudo sed -i "s|$old_path|$new_path|g" "$nginx_configs"
 pid=$(pgrep nginx | head -n 1)
 sudo service nginx start
