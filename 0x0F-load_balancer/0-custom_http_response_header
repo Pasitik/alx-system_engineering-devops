@@ -8,7 +8,7 @@ new_path="/var/www"
 hostname=$(hostname)
 
 # Define the custom header and its value
-custom_header="X-Served-By \"$hostname\";"
+custom_header="Xadd_heade r-Served-By "$hostname";"
 
 sudo apt-get update
 sudo apt-get install -y nginx
