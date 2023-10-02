@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Install and configure HAproxy on your lb-01 server.
+
+sudo apt install haproxy -y
+echo "frontend http80
+        bind *:80
+        timeout client 60s
+        mode http
+        default_backend allservers
+
+backend allservers
+        timeout connect 5s
+        timeout server 100s
+        mode http
+        server web-01 54.237.2.254:80
+        server web-02 54.144.140.128:80" > hp_config.cfg
+sudo service haproxy restart
