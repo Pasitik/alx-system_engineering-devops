@@ -12,6 +12,6 @@ backend allserveris
         timeout connect 5s
         timeout server 100s
         mode http
-        server web-01 54.237.2.254:80
-        server web-02 54.144.140.128:80" > hp_config.cfg
+        server web-01 54.237.2.254:80 check
+        server web-02 54.144.140.128:80 check" > hp_config.cfg
 sudo service haproxy restart
