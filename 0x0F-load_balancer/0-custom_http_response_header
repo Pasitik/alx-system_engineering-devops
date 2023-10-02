@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# installs nginx and configures it on a remote server
+
+nginx_configs="/etc/nginx/sites-available/default"
+old_path="/var/www/html"
+new_path="/var/www"
+# Get the hostname of the server
+hostname=$(hostname)
+
+# Define the custom header and its value
+custom_header="X-Served-By \"$hostname\";"
+
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo service start nginx
+sudo chown -R "$USER":"$USER" $new_path
+echo "Hello World!" > /var/www/index.html
+sudo chown -R "$USER":"$USER" $nginx_configs
+sudo sed -i "/location \/ {/a\\                $custom_header" "$nginx_configs"
+sudo sed -i "s|$old_path|$new_path|g" "$nginx_configs"
+pid=$(pgrep nginx | head -n 1)
+sudo service nginx start
