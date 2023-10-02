@@ -4,11 +4,11 @@
 sudo apt install haproxy -y
 echo "frontend http80
         bind *:80
-        timeout client 60s
         mode http
         default_backend allservers
 
-backend allservers
+backend allserveris
+		balance roundrobing
         timeout connect 5s
         timeout server 100s
         mode http
