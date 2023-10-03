@@ -4,14 +4,15 @@
 sudo apt install haproxy -y
 echo "frontend http80
         bind *:80
+        timeout client 60s
         mode http
         default_backend allservers
 
-backend allserveris
-		balance roundrobing
-        timeout connect 5s
+backend allservers
+        balance roundrobin
+        timeout connect 10s
         timeout server 100s
         mode http
         server web-01 54.237.2.254:80 check
-        server web-02 54.144.140.128:80 check" > hp_config.cfg
+        server web-02 54.144.140.128:80 check" > /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
