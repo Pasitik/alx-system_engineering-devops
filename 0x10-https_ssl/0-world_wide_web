@@ -20,5 +20,5 @@ if [ "$#" -eq 1 ]; then
 	done
 fi
 if [ "$#" -eq 2 ]; then
-	subdomain_info "$1" "$2"
+	subdomain_info "$2" "$1"
 fi
