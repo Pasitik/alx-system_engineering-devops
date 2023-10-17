@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+current_date=$(date +'%d-%m-%Y')
 sql_file="backup.sql"
 tar_file="$current_date.tar.gz"
 mysqldump -u root -p"$1" --all-databases > $sql_file
