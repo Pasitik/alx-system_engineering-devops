@@ -3,23 +3,12 @@
 import requests
 import sys
 
-
 if __name__ == "__main__":
-    base = "https://jsonplaceholder.typicode.com"
-    id = sys.argv[1]
-    users = "/users/{}".format(id)
-    todos = "/todos?userId={}".format(id)
+    url = "https://jsonplaceholder.typicode.com/"
+    user = requests.get(url + "users/{}".format(sys.argv[1])).json()
+    todos = requests.get(url + "todos", params={"userId": sys.argv[1]}).json()
 
-    rEmp = requests.get(base + users)
-    rTodos = requests.get(base + todos)
-    tasks = rTodos.json()
-    EMPLOYEE_NAME = rEmp.json()["name"]
-    completed_tasks = 0
-    for task in tasks:
-        if task["completed"] is True:
-            completed_tasks += 1
-    print("Employee {} is done with tasks({}/{})"
-      .format(EMPLOYEE_NAME, completed_tasks, len(tasks)))
-    for task in tasks:
-        if task["completed"] == True:
-            print("\t {}\n".format(task["title"]))
+    completed = [t.get("title") for t in todos if t.get("completed") is True]
+    print("Employee {} is done with tasks({}/{}):".format(
+        user.get("name"), len(completed), len(todos)))
+    [print("\t {}".format(c)) for c in completed]
