@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""script to get suscribers"""
 import requests
 
 
